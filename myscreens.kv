@@ -1,0 +1,29 @@
+#:kivy 1.11.1
+
+<MyScreenManager>:
+    id: screen_manager
+    Screen:
+        name: 's1'
+        id: 'Screen1'
+        manager: screen_manager
+        Label:
+            text: 'This'
+            id: l1
+    
+    Screen:
+        name: 's2'
+        id: 'Screen2'
+        manager: screen_manager
+        Label:
+            text: 'is'
+            id: l2
+    
+    Screen:
+        name: 's3'
+        id: 'Screen3'
+        manager: screen_manager
+        Label:
+            text: 'Sparta!'
+    
+
+    

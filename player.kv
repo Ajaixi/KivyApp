@@ -1,0 +1,112 @@
+#:kivy 1.11.1
+
+<MyButton>:
+
+<MyLayout>:
+
+<ScreenOne>:
+    name: "screen1"
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            id: FirstLine
+            name: "screen1"
+            padding: 0
+            spacing: 0  
+            background_normal: ''
+            background_color: (0.94,0.68,0.24, 1) 
+            cols: 3
+            row: 1
+            padding: 0
+            spacing: 0               
+            size_hint_y: .1
+                        
+            Button:
+                id: load_button
+                text: 'Load'
+                background_color: (0.8,0.62,0.49, 1) if self.state == 'normal' else (0.502, 0, 0.502, .75)
+                font_size: 20
+                size_hint: .3, 1
+                pos_hint: {'x': 0, 'top': 1}
+                on_press: root.onNextScreen(self, text_out.text)
+                on_release: text_out.text = ''
+               
+
+            TextInput:
+                id: text_out
+                font_name: 'simfang.ttf'
+                size_hint: .6, 1
+                font_size: 20
+
+            Button:
+                text: 'Search'
+                id: search_button
+                background_color: (0.7,0.9,0.49, 1) if self.state == 'normal' else (0.502, 0, 0.502, .75)
+                size_hint: .3, 1
+                font_size: 20
+                on_press: root.ids['cus_lay'].search_result(self, text_out.text)
+                on_release: text_out.text = ''
+
+                
+        ScrollView:
+            pos_hint: {'bottom':1}
+            do_scroll_y: True
+            MyLayout:
+                id: cus_lay
+                background_normal: ''
+                background_color: (0.94,0.68,0.24, 1)
+                name: "screen1"
+                cols: 1
+                padding: 0
+                spacing: 0         
+                size_hint_y: None
+                #height: self.minimum_height
+                
+                
+
+<ScreenTwo>:
+    GridLayout:
+        name: "ScreenGrid"
+        pos_hint: {'top': 1}
+        cols:1
+        rows:2
+        padding: 0
+        spacing: 0 
+        ActionBar:
+            size_hint: 1, .2
+            pos_hint: {'top': 1}
+            ActionView:
+                ActionPrevious:
+                    pos_hint: {'top': 1.03}
+                    size_hint: .2, .2
+                    with_previous: True
+                    on_release: root.onBackBtn()
+
+
+
+<Manager>:
+    id: screen_manager
+    
+    screen_one: screen_one
+    screen_two: screen_two
+ 
+    ScreenOne:
+        id: screen_one
+        name: 'screen1'
+        manager: screen_manager 
+        
+
+    ScreenTwo:
+        id: screen_two
+        name: 'screen2'
+        manager: screen_manager
+
+   
+
+<VideoPlayer>:
+    options: {'eos': 'stop'}
+    allow_stretch:True
+
+<Button>:
+    height: '100sp'
+    size_hint_y: None

@@ -1,0 +1,13 @@
+#:kivy 1.11.1
+
+<MyScrollView>:
+    do_scroll_x: False
+    do_scroll_y: True
+
+    Button:
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: (self.width, self.height)
+        padding: 10, 10
+        text: 'really some amazing text' * 10
+
